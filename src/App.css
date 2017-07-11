@@ -1,0 +1,66 @@
+.App {
+  text-align: Left;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 60px;
+}
+
+.App-header {
+  background-color: black;
+  height: 40px;
+  padding: 0px;
+  color: white;
+}
+
+.App-topic {
+  margin-top: 10px;
+  font-size: 15px;
+  color: white;
+}
+
+.ButtonSignIn {
+    height: 40px;
+    padding: 10px;
+    color: white;
+    background: none;
+}
+.ButtonSignIn:hover {
+    height: 40px;
+    padding: 10px;
+    background: white;
+}
+
+.DropDownBtn {
+    border: black;
+    height: 40px;
+    padding: 10px;
+    margin-top: 3px;
+    color: white;
+    font-size: 15px;
+    background: none;
+}
+.dropdownBtn:hover {
+    border: black;
+    height: 40px;
+    padding: 10px;
+    margin-top: 3px;
+    color: white;
+    font-size: 15px;
+    background: none;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

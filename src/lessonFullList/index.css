@@ -1,0 +1,20 @@
+.lessonName {
+  text-align: center;
+  font-size: 15px;
+}
+
+hr {
+  margin: 0px;
+}
+
+p[id="lessonName"] {
+  font-size: 20px;
+}
+
+.lessonFullList Button{
+  height: 60px;
+  width:  160px;
+  padding: 10px;
+  margin: 0px;
+  background: white;
+}
