@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Button} from 'react-bootstrap';
-import DemoList from '../../demoList/index.js'
+import DemoList from '../../components/demoList/index.js'
 
 class HomePage extends Component {
   render() {

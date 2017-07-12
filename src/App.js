@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
-import {Button} from 'react-bootstrap';
-import {ButtonGroup} from 'react-bootstrap';
-import {DropdownButton} from 'react-bootstrap';
-import {MenuItem} from 'react-bootstrap';
-import MainDropDown from './dropdown/main.js';
+import MainDropDown from './components/dropdown/main.js';
 import HomePage from './page/homepage/index.js';
 import PracticePage from './page/practice/index.js';
+import GuidelinePage from './page/guideline/index.js';
 import {BrowserRouter, Route, browserHistory} from 'react-router-dom';
+import {Modal, Popup, Popover, Tooltip, popup, OverlayTrigger, ControlLabel,Button, Navbar, FormGroup, FormControl} from 'react-bootstrap';
 
 //var ReactRouter = require('react-router');
 
@@ -19,11 +17,118 @@ const Home = () => <HomePage/>
 const Practice = () => <PracticePage/>
 const Challenge = () => <HomePage/>
 const Leaderboard = () => <HomePage/>
-const Guideline = () => <HomePage/>
-const Signin = () => <HomePage/>
+const Guideline = () => <GuidelinePage/>
+const Signin = () => <Popup/>
+
+const SignInForm = React.createClass({
+  getInitialState() {
+    return {
+      value: ''
+    };
+  },
+
+  getValidationState() {
+    const length = this.state.value.length;
+    if (length > 10) return 'success';
+    else if (length > 5) return 'warning';
+    else if (length > 0) return 'error';
+  },
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  },
+  render() {
+    return (
+      <form>
+        <FormGroup
+          controlId="formBasicText"
+          validationState={this.getValidationState()}
+        >
+          <ControlLabel>ID Account</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.value}
+            placeholder="ID Account"
+            onChange={this.handleChange}
+          />
+          <br/>
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            type="password"
+            value={this.state.value}
+            placeholder="Password"
+            onChange={this.handleChange}
+          />
+          <FormControl.Feedback />
+        </FormGroup>
+      </form>
+    );
+  }
+});
+
+const SignInPopup = React.createClass({
+  getInitialState() {
+    return { showModal: false };
+  },
+
+  close() {
+    this.setState({ showModal: false });
+  },
+
+  open() {
+    this.setState({ showModal: true });
+  },
+
+  render() {
+    const popover = (
+      <Popover id="modal-popover" title="popover">
+        very popover. such engagement
+      </Popover>
+    );
+    const tooltip = (
+      <Tooltip id="modal-tooltip">
+        wow.
+      </Tooltip>
+    );
+
+    return (
+      <div>
+        <Button
+          id="signIn"
+          onClick={this.open}
+        >
+          Sign In
+        </Button>
+
+        <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal.Header closeButton>
+            <Modal.Title>Enter login information</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <SignInForm/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Submit</Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    );
+  }
+});
 
 class App extends Component {
   render() {
+    const popover = (
+      <Popover id="modal-popover" title="popover">
+        very popover. such engagement
+      </Popover>
+    );
+    const tooltip = (
+      <Tooltip id="modal-tooltip">
+        wow.
+      </Tooltip>
+    );
+
     return (
       <div>
         <nav className="navbar navbar-inverse App">
@@ -46,8 +151,8 @@ class App extends Component {
                 <li><a href="/guideline">Guideline</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right className">
-                <li><a href="/signin">
-                  <Button className="ButtonSignIn">Sign In</Button></a></li>
+                <li><a href="#">
+                  <SignInPopup/></a></li>
               </ul>
             </div>
           </div>
@@ -58,7 +163,7 @@ class App extends Component {
             <Route path='/practice' component={Practice} />
             <Route path='/challenge' component={Challenge} />
             <Route path='/leaderboard' component={Leaderboard} />
-            <Route path='/guideline' component={Forum} />
+            <Route path='/guideline' component={Guideline} />
             <Route path='/signin' component={Signin} />
           </div>
         </BrowserRouter>

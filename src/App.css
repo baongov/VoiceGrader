@@ -20,16 +20,22 @@
   color: white;
 }
 
-.ButtonSignIn {
+Button[id="signIn"] {
     height: 40px;
     padding: 10px;
     color: white;
     background: none;
+    border-color: #ffffff;
+    font-size: 15px;
+    boxShadow: '0 5px 10px rgba(0, 0, 0, 0.2)';
+    border: '1px solid #CCC'
 }
-.ButtonSignIn:hover {
+Button[id="signIn"]:hover {
     height: 40px;
     padding: 10px;
     background: white;
+    border-color: #ffffff;
+    font-size: 15px;
 }
 
 .DropDownBtn {
