@@ -1,19 +1,23 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import {Button} from 'react-bootstrap';
+import {Grid, ProgressBar, Row, Col} from 'react-bootstrap';
 import LessonFullList from '../../components/lessonFullList/index.js'
 
 class PracticePage extends Component {
   render() {
     return (
-      <div>
-        <div id="mainModule">
-          <LessonFullList/>
-          <LessonFullList/>
-          <LessonFullList/>
+      <Grid className="col-xs-6 col-xs-offset-3">
+        <p>Your result:</p>
+        <div className="col-xs-7">
+          Intonation:<ProgressBar bsStyle="success" now={40} />
+          Loudness:<ProgressBar bsStyle="info" now={20} />
+          Stableness:<ProgressBar bsStyle="warning" now={60} />
+          Sharpness:<ProgressBar bsStyle="danger" now={80} />
         </div>
-      </div>
+        <LessonFullList/>
+        <LessonFullList/>
+        <LessonFullList/>
+      </Grid>
     );
   }
 }

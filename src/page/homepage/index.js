@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Button} from 'react-bootstrap';
+import {BrowserRouter, Route, browserHistory} from 'react-router-dom';
+import {Button, Grid, Row, Col} from 'react-bootstrap';
 import DemoList from '../../components/demoList/index.js'
+import IntonationLesson from '../../components/IntonationLesson/index.js'
+
+
+const FirstLesson = () => <DemoList/>
 
 class HomePage extends Component {
   render() {
@@ -13,13 +18,19 @@ class HomePage extends Component {
             <br/>
             <p id="intro">Improve your intonation by practicing following lessons</p>
             <br/>
-            <Button className="firstChallengeBtn">Solve me first</Button>
+            <a href="/firstlesson"><Button className="firstChallengeBtn">Solve me first</Button></a>
         </div>
-        <div id="mainModule">
+        <Grid className="col-xs-6 col-xs-offset-3">
           <DemoList/>
-            <DemoList/>
-              <DemoList/>
-        </div>
+          <DemoList/>
+          <DemoList/>
+        </Grid>
+
+        <BrowserRouter history={browserHistory}>
+          <div>
+            <Route path='/firstlesson' component={FirstLesson}/>
+          </div>
+        </BrowserRouter>
       </div>
     );
   }

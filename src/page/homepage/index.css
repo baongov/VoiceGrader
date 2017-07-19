@@ -1,8 +1,5 @@
 .track-heading {
-  text-align: center;
   background-color: #DCDCDC;
-  padding-top: 30px;
-  padding-bottom: 30px;
 }
 
 p[id="title"]{
@@ -29,11 +26,4 @@ p[id="intro"] {
   padding: 10px;
   color: black;
   background: none;
-}
-
-div[id="mainModule"] {
-  margin-top: 30px;
-  margin-left: 400px;
-  margin-right: 400px;
-  background-color: none;
 }

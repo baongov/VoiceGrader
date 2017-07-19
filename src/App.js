@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import logo from './logo.svg';
-import MainDropDown from './components/dropdown/main.js';
 import HomePage from './page/homepage/index.js';
 import PracticePage from './page/practice/index.js';
 import GuidelinePage from './page/guideline/index.js';
-import {BrowserRouter, Route, browserHistory} from 'react-router-dom';
-import {Modal, Popup, Popover, Tooltip, popup, OverlayTrigger, ControlLabel,Button, Navbar, FormGroup, FormControl} from 'react-bootstrap';
+import {BrowserRouter, Switch, Route, browserHistory, Link} from 'react-router-dom';
+import {Modal, Popup, Popover, Tooltip, popup, ControlLabel,Button, Navbar, FormGroup, FormControl, Grid} from 'react-bootstrap';
+import IntonationLesson from './components/IntonationLesson/index.js'
 
 //var ReactRouter = require('react-router');
 
 import './App.css';
 
-
+const FirstLesson = () => <IntonationLesson/>
 const Home = () => <HomePage/>
 const Practice = () => <PracticePage/>
 const Challenge = () => <HomePage/>
@@ -130,44 +129,48 @@ class App extends Component {
     );
 
     return (
-      <div>
-        <nav className="navbar navbar-inverse App">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-              <a className="navbar-brand App-header" href="/home">
-                <img src={logo} className="App-logo" alt="logo" />
-              </a>
+      <BrowserRouter history={browserHistory}>
+        <div>
+          <nav className="navbar navbar-inverse App">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                </button>
+                <Link className="navbar-brand App-header" to="/">
+                  <img src={logo} className="App-logo" alt="logo" />
+                </Link>
+              </div>
+              <div className="collapse navbar-collapse" id="myNavbar">
+                <ul className="nav navbar-nav App-topic">
+                  <li><Link to="/practice">Practice</Link></li>
+                  <li><Link to="/challenge">Challenge</Link></li>
+                  <li><Link to="/leaderboard">Leaderboard</Link></li>
+                  <li><Link to="/guideline">Guideline</Link></li>
+                </ul>
+                <ul className="nav navbar-nav navbar-right className">
+                  <li><a href="#">
+                    <SignInPopup/></a></li>
+                </ul>
+              </div>
             </div>
-            <div className="collapse navbar-collapse" id="myNavbar">
-              <ul className="nav navbar-nav App-topic">
-                <li><a href="/practice">Practice</a></li>
-                <li><a href="/challenge">Challenge</a></li>
-                <li><a href="/leaderboard">Leaderboard</a></li>
-                <li><a href="/guideline">Guideline</a></li>
-              </ul>
-              <ul className="nav navbar-nav navbar-right className">
-                <li><a href="#">
-                  <SignInPopup/></a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <BrowserRouter history={browserHistory}>
-          <div>
-            <Route path='/home' component={Home} />
+          </nav>
+
+
+
+          <Switch>
+            <Route exact path='/' component={Home} />
             <Route path='/practice' component={Practice} />
             <Route path='/challenge' component={Challenge} />
             <Route path='/leaderboard' component={Leaderboard} />
             <Route path='/guideline' component={Guideline} />
             <Route path='/signin' component={Signin} />
-          </div>
-        </BrowserRouter>
-      </div>
+            <Route path='/firstlesson' component={FirstLesson}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

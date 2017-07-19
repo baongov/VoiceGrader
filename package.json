@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "chart.js": "^1.1.1",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.0",
+    "react-chartjs": "^0.8.0",
     "react-dom": "^15.6.1",
+    "react-linechart": "^1.1.9",
     "react-popup": "^0.8.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "recorderjs": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {
