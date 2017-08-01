@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {Button, Row, Col, Grid, Thumbnail} from 'react-bootstrap';
+import {Button, Row, Col, Grid} from 'react-bootstrap';
 import './index.css';
 
 class DemoList extends Component {
   render() {
     return (
       <Grid className="col-xs-11 lessonName">
-        <p>Lesson Name</p>
-        <hr/>
+        <p id="demoList">Lesson Name</p>
+        <hr id="lineLesson"/>
         <Grid>
           <Row>
           <Col xs={2}>

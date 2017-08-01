@@ -5,12 +5,12 @@
   padding-bottom: 30px;
 }
 
-p[id="title"]{
+#title{
   text-align: center;
   font-size: 45px;
 }
 
-p[id="intro"] {
+#intro {
   text-align: center;
   font-size: 15px;
 }
@@ -31,7 +31,7 @@ p[id="intro"] {
   background: none;
 }
 
-div[id="mainModule"] {
+#mainModule {
   text-align: center;
   width: 1000px;
   background-color: none;

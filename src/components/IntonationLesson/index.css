@@ -1,30 +1,75 @@
 .LessonGrid {
   margin-top:20px;
+  text-align: center;
 }
 
-p[id="LessonStyle"] {
+#LessonStyle {
   font-size: 18px;
+  text-align: left;
 }
 
-p[id="grading"] {
-  text-align: right;;
-  font-size: 15px;
+.topic {
+  font-weight: bold;
 }
 
 .example {
-  margin-left: 2px;
-  font-size: 16px;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.ov-play {
+  margin: 10px;
 }
 
 .record{
-    margin-top: 15px;
+  margin-top: 15px;
   margin-right: 16px;
 }
 
 .play-back{
-    margin-top: 15px;
+  margin-top: 15px;
+}
+
+.resultPopup {
+  margin: 0px;
+}
+
+.sampleVoice {
+  display: inline-block;
+  border: 1px solid black;
+  pading: 5px;
+}
+
+.grading {
+  pading: 5px;
+  align-items: center;
 }
 
 .gradingBar {
-  margin: 30px
+  margin: 10px;
+  width: 100%;
+
+}
+
+.loadingSpinner {
+  position: absolute;
+
+    z-index: 1;
+}
+
+#overlay{
+  width:100px;
+  height: 100px;
+  position:absolute; /*You may also use fixed depending on your needs.*/
+  left:50%;
+  top:30%; /*If you want it at the bottom you probably want bottom:0 instead*/
+  z-index: 999;
+}
+
+#barChart {
+  height: 400px;
+}
+
+#modal .modal-dialog {
+  width: 700px;
 }

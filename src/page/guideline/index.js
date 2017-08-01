@@ -13,7 +13,7 @@ class PracticePage extends Component {
           <div className="row">
             <div className="col-xs-8 col-xs-offset-2 panel panel-default">
               <div className="panel-body">
-                <h1>Using Voice Grader</h1>
+                <h1 id="title">Using Voice Grader</h1>
 
                 <h3>Introduction</h3>
                 <p className="guideText">Intonation Coach is intended to help you, as a language learner, become more aware of your intonation and model it after patterns used by native speakers. To get started, choose your target language, read the overview and listen to each sample sentence in the overview tab.</p>

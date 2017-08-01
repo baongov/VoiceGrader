@@ -2,16 +2,6 @@
   background-color: #DCDCDC;
 }
 
-p[id="title"]{
-  text-align: center;
-  font-size: 45px;
-}
-
-p[id="intro"] {
-  text-align: center;
-  font-size: 15px;
-}
-
 .firstChallengeBtn {
   height: 40px;
   width: 220px;

@@ -1,0 +1,40 @@
+.itemSentence {
+  display: inline-block;
+  width: 100%;
+  border: solid 1px black;
+  padding: 5px;
+  margin: 3px;
+  background: none;
+  background-color: white
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-gap:3px;
+  grid-auto-rows: minmax(12px, auto);
+  text-align: center;
+  align-items: center;
+}
+
+.wrapper-zero {
+  font-size: 18px;
+  grid-column: 1 / 2;
+  grid-row: 1
+}
+
+.wrapper-one {
+  font-size: 18px;
+  grid-column: 2 / 11;
+  grid-row: 1
+}
+
+.wrapper-two {
+  grid-column: 11;
+  grid-row: 1;
+}
+
+.wrapper-three {
+  grid-column: 12;
+  grid-row: 1;
+}

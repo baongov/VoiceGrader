@@ -1,0 +1,8 @@
+#barChart svg{
+  width: 400px;
+  height: 400px;
+}
+
+#lineChart svg {
+  height: 500px;
+}

@@ -2,27 +2,16 @@
   padding: 10px;
 }
 
-p {
+#fullLesson{
   text-align: left;
   font-size: 20px;
 }
 
-hr {
+#lineLesson{
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   margin-left: auto;
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
-}
-
-.vgBtn {
-  height: 60px;
-  width: 100%;
-  padding: 10px;
-  color: black;
-  background: none;
-  margin: 10px;
-  border-radius: 0;
-  font-size: 15px;
 }

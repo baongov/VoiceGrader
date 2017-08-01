@@ -1,0 +1,17 @@
+.dropZoneConfig {
+  display: block;
+  border: 1px solid black;
+  width: 60%;
+  height: 100%;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 20%;
+  margin-right: 20%
+}
+.uploadPage {
+  text-align: center;
+}

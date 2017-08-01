@@ -20,7 +20,7 @@
   color: white;
 }
 
-Button[id="signIn"] {
+.AppBtn {
     height: 40px;
     padding: 10px;
     color: white;
@@ -30,7 +30,7 @@ Button[id="signIn"] {
     boxShadow: '0 5px 10px rgba(0, 0, 0, 0.2)';
     border: '1px solid #CCC'
 }
-Button[id="signIn"]:hover {
+.AppBtn:hover {
     height: 40px;
     padding: 10px;
     background: white;

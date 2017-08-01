@@ -3,9 +3,13 @@ import logo from './logo.svg';
 import HomePage from './page/homepage/index.js';
 import PracticePage from './page/practice/index.js';
 import GuidelinePage from './page/guideline/index.js';
+import Result from './page/result/index.js';
+import UploadUI from './page/upload/index.js';
+import DraftComp from './page/draft/index.js';
 import {BrowserRouter, Switch, Route, browserHistory, Link} from 'react-router-dom';
-import {Modal, Popup, Popover, Tooltip, popup, ControlLabel,Button, Navbar, FormGroup, FormControl, Grid} from 'react-bootstrap';
+import {Modal, Popup, Popover, Tooltip, ControlLabel,Button, FormGroup, FormControl} from 'react-bootstrap';
 import IntonationLesson from './components/IntonationLesson/index.js'
+import DialogChallenge from './components/dialogVideoLesson/index.js'
 
 //var ReactRouter = require('react-router');
 
@@ -14,10 +18,13 @@ import './App.css';
 const FirstLesson = () => <IntonationLesson/>
 const Home = () => <HomePage/>
 const Practice = () => <PracticePage/>
-const Challenge = () => <HomePage/>
+const Challenge = () => <DialogChallenge/>
 const Leaderboard = () => <HomePage/>
 const Guideline = () => <GuidelinePage/>
 const Signin = () => <Popup/>
+const ResultPage = () => <Result/>
+const UploadPage = () => <UploadUI/>
+const DraftPage = () => <DraftComp/>
 
 const SignInForm = React.createClass({
   getInitialState() {
@@ -79,21 +86,11 @@ const SignInPopup = React.createClass({
   },
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = (
-      <Tooltip id="modal-tooltip">
-        wow.
-      </Tooltip>
-    );
-
     return (
       <div>
         <Button
           id="signIn"
+          className="AppBtn"
           onClick={this.open}
         >
           Sign In
@@ -150,15 +147,14 @@ class App extends Component {
                   <li><Link to="/leaderboard">Leaderboard</Link></li>
                   <li><Link to="/guideline">Guideline</Link></li>
                 </ul>
-                <ul className="nav navbar-nav navbar-right className">
+                <ul className="nav navbar-nav navbar-right">
+                  <li><a href="/upload"><Button id="upload" className="AppBtn">Upload</Button></a></li>
                   <li><a href="#">
                     <SignInPopup/></a></li>
                 </ul>
               </div>
             </div>
           </nav>
-
-
 
           <Switch>
             <Route exact path='/' component={Home} />
@@ -168,6 +164,9 @@ class App extends Component {
             <Route path='/guideline' component={Guideline} />
             <Route path='/signin' component={Signin} />
             <Route path='/firstlesson' component={FirstLesson}/>
+            <Route path='/result' component={ResultPage}/>
+            <Route path='/upload' component={UploadPage}/>
+            <Route path='/draft' component={DraftPage}/>
           </Switch>
         </div>
       </BrowserRouter>

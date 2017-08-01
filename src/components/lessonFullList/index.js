@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import {Button, Grid, Row, Col} from 'react-bootstrap';
 import './index.css';
 
@@ -7,8 +6,8 @@ class LessonFullList extends Component {
   render() {
     return (
       <Grid className="col-xs-11 lessonName">
-        <p>Lesson Name</p>
-        <hr/>
+        <p id="fullLesson">Lesson Name</p>
+        <hr id="lineLesson"/>
         <Grid>
           <Row>
             <Col xs={2}>
