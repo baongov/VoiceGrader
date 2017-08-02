@@ -1,8 +1,11 @@
 #barChart svg{
-  width: 400px;
   height: 400px;
 }
 
 #lineChart svg {
   height: 500px;
+}
+
+.nvd3-svg {
+  height:500px
 }

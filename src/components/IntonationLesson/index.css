@@ -66,10 +66,20 @@
   z-index: 999;
 }
 
-#barChart {
-  height: 400px;
+.div[id="lineChart"] {
+  text-align: center;
+}
+
+#lineChart svg {
+  height: 500px;
+  width: 900px;
 }
 
 #modal .modal-dialog {
   width: 700px;
+}
+
+
+.nvd3 g.nv-groups path.nv-line {
+  stroke-width: 4px;
 }

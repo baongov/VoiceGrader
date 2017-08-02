@@ -6,11 +6,34 @@ import '../../../node_modules/react-linechart/dist/styles.css';
 import Recorder from '../../../lib/Recorderjs/dist/recorder.js';
 import LChart from '../lineChart/index.js'
 import ResultChart from '../../page/result/index.js';
-import NVD3Chart from 'react-nvd3'
+import d3 from 'd3'
+import nvd3 from 'nvd3'
 var dataExampleChart = require('../../data/en-us-1-pd.json');
 var audioContext = new AudioContext();
 var input, recorder;
 var userBlob, userRecUrl;
+
+function slidingBare() {
+  var recLength = 3.1
+  var svg = d3.selectAll(".nv-chart svg");
+  console.log(svg);
+  var playBar = svg.append("line")
+      .attr("x1", 60)
+      .attr("y1", 20)
+      .attr("x2", 60)
+      .attr("y2", 500)
+      .attr("stroke-width", 1)
+      .attr("stroke", "black");
+  playBar.transition()
+      .attr("x1", 900)   // width of graph
+      .attr("x2", 900)
+      .duration(recLength*1000)
+      .ease("linear")
+      .transition()
+      .delay(recLength*1000)
+      .duration(200)
+      .remove();
+}
 
 function getSoundFile(url) {
   var textRep = fetch(url)
@@ -23,7 +46,9 @@ function getSoundFile(url) {
               source.buffer = audioBuffer;
               source.connect(audioContext.destination);
               source.start(0);
-          });
+
+              slidingBare();
+            })
       })
       .catch((error) => {return error})
   return textRep;
@@ -35,6 +60,7 @@ var startRecord = function (exID, recLength) {
     var playBackBtn = document.getElementById("playBackBtn")
     var audio = new Audio('http://127.0.0.1:5000/beep-01a.mp3');
 
+    slidingBare();
     audio.volume = 0.1;
     audio.play();
     recordBtn.disabled = true;
@@ -65,8 +91,8 @@ class IntonationLesson extends Component {
     super(props);
 
     this.state = {
-      exampleData : dataExampleChart,
-      userData : [],
+      sample : {key: "Sample", color: "#ff7f0e", values:dataExampleChart},
+      recorder : {key: "Recorder", color: "#2ca02c", values:[]},
       showModal: false
     };
 
@@ -75,6 +101,15 @@ class IntonationLesson extends Component {
         var input = audioContext.createMediaStreamSource(stream);
         recorder = new Recorder(input);
       });
+
+    var segments = [
+                  (165, 145, 'Yesterday,'),
+                  (315, 120, 'I went to the'),
+                  (445, 60, 'store'),
+                  (520, 35, 'and'),
+                  (560, 70, 'bought'),
+                  (640, 110, 'groceries.'),
+                ]
   };
 
   playBack() {
@@ -116,7 +151,7 @@ class IntonationLesson extends Component {
 
               generalResult.hidden = false;
               overlay.hidden = true;
-              userUpdateData.setState({userData: attempt.pitch_data});
+              userUpdateData.setState({recorder: {key: "Recorder", color: "#2ca02c", values:attempt.pitch_data}});
           });
         }
         reader.readAsDataURL(userBlob);
@@ -126,8 +161,12 @@ class IntonationLesson extends Component {
     recorder.clear();
   };
 
+  componentDidMount () {
+  }
 
   render() {
+
+
     return (
       <div id="wrap">
         <img src="http://127.0.0.1:5000/loader.gif" id="overlay" hidden/>
@@ -143,7 +182,24 @@ class IntonationLesson extends Component {
           <br />
           <button id="recordBtn" type="button" className="btn btn-danger record" onClick={this.handleRecord}><span className="glyphicon glyphicon-record"></span> Record</button>
           <button id="playBackBtn" type="button" className="btn btn-primary play-back" onClick={this.playBack}><span className="glyphicon glyphicon-play"></span> Play Back</button>
-          <LChart id="root" lchartData={this.state.exampleData} uchartData={this.state.userData}/>
+
+          <Row>
+            <div id="lineChart" className="col-xs-8 col-xs-offset-1">
+              <LChart dataChart={[this.state.sample, this.state.recorder]}/>
+            </div>
+          </Row>
+
+          <Row class="transcript">
+            <svg>
+                <text text-anchor="start" x="165" y="20" textLength="145">Yesterday,</text>
+                <text text-anchor="start" x="315" y="20" textLength="120">I went to the</text>
+                <text text-anchor="start" x="445" y="20" textLength="60">store</text>
+                <text text-anchor="start" x="520" y="20" textLength="35">and</text>
+                <text text-anchor="start" x="560" y="20" textLength="70">bought</text>
+                <text text-anchor="start" x="640" y="20" textLength="110">groceries</text>
+            </svg>
+          </Row>
+
           <div id="generalResult" hidden>
             <Row className="grading">
               <Col className="col-xs-2 col-xs-offset-3 "><h4 className="gradingTitle">Grading bar</h4></Col>
