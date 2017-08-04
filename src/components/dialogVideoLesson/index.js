@@ -24,10 +24,7 @@ var stringToSecond = function(str) {
 }
 var startRecord = function (exID, recLength) {
     console.log("Recording.....")
-    var audio = new Audio('http://127.0.0.1:5000/beep-01a.mp3');
-
-    audio.volume = 0.1;
-    audio.play();
+    
     recorder.clear();
     recorder.record();
 };
@@ -144,13 +141,14 @@ class DialogVideoLesson extends Component {
     });
   }
 
+  componentDidMount () {
+    this.onloadpage();
+  }
+
   render(){
     var context = this;
     let scrollbarStyles = {borderRadius: 5};
 
-    document.addEventListener("DOMContentLoaded", function(event) {
-      context.onloadpage();
-    });
 
     return(
       <div>

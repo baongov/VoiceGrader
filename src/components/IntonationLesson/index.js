@@ -58,11 +58,8 @@ var startRecord = function (exID, recLength) {
     console.log("Recording.....")
     var recordBtn = document.getElementById("recordBtn")
     var playBackBtn = document.getElementById("playBackBtn")
-    var audio = new Audio('http://127.0.0.1:5000/beep-01a.mp3');
 
     slidingBare();
-    audio.volume = 0.1;
-    audio.play();
     recordBtn.disabled = true;
     playBackBtn.disabled = true;
     recorder.clear();
@@ -203,7 +200,7 @@ class IntonationLesson extends Component {
           <div id="generalResult" hidden>
             <Row className="grading">
               <Col className="col-xs-2 col-xs-offset-3 "><h4 className="gradingTitle">Grading bar</h4></Col>
-              <Col className="col-xs-4"><ProgressBar className="gradingBar" now={30} label={`30%`} bsStyle="danger"/></Col>
+              <Col className="col-xs-4"><ProgressBar className="gradingBar" now={this.state.ramNum} label={this.state.ramNum+"%"} bsStyle="danger"/></Col>
             </Row>
             <Row><button type="button" className="btn btn-primary record" onClick={this.open}><span className="glyphicon glyphicon-check"></span> Detail</button></Row>
           </div>
